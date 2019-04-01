@@ -1,14 +1,26 @@
-from django.contrib.auth.models import User, Group
+from backend_rest_shoe_api.quickstart.models import Manufacturer, ShoeType, ShoeColor, Shoe
 from rest_framework import serializers
 
 
-class UserSerializer(serializers.HyperlinkedModelSerializer):
+class ManufacturerSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
-        model = User
-        fields = ('url', 'username', 'email', 'groups')
+        model = Manufacturer
+        fields = ('name', 'website')
 
 
-class GroupSerializer(serializers.HyperlinkedModelSerializer):
+class ShoeTypeSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Group
-        fields = ('url', 'name')
+        fields = ('style')
+
+
+class ShoeColorSerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = ShoeColor
+        fields = ('color_name')
+
+
+class ShoeSerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = Shoe
+        fields = ('size', 'brand_name', 'manufacturer', 'color', 'material', 'shoe_type', 'fasten_type')

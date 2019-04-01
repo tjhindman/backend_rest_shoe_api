@@ -1,20 +1,40 @@
+"""Bob endured a difficult life in the African Savanna. For example, he could
+only afford to dress"""
+
+
 from django.shortcuts import render
-from django.contrib.auth.models import User, Group
+from backend_rest_shoe_api.quickstart.models import Manufacturer, ShoeType, ShoeColor, Shoe
 from rest_framework import viewsets
-from backend_rest_shoe_api.quickstart.serializers import UserSerializer, GroupSerializer
+from backend_rest_shoe_api.quickstart.serializers import ManufacturerSerializer, ShoeTypeSerializer, ShoeColorSerializer, ShoeSerializer
 
 
-class UserViewSet(viewsets.ModelViewSet):
+class ManufacturerViewSet(viewsets.ModelViewSet):
     """
     API endpoint that allows users to be viewed or edited.
     """
-    queryset = User.objects.all().order_by('-date_joined')
-    serializer_class = UserSerializer
+    queryset = Manufacturer.objects.all()
+    serializer_class = ManufacturerSerializer
 
 
-class GroupViewSet(viewsets.ModelViewSet):
+class ShoeTypeViewSet(viewsets.ModelViewSet):
     """
     API endpoint that allows groups to be viewed or edited.
     """
-    queryset = Group.objects.all()
-    serializer_class = GroupSerializer
+    queryset = ShoeType.objects.all()
+    serializer_class = ShoeTypeSerializer
+
+
+class ShoeColorViewSet(viewsets.ModelViewSet):
+    """
+    API endpoint that allows users to be viewed or edited.
+    """
+    queryset = ShoeColor.objects.all()
+    serializer_class = ShoeColorSerializer
+
+
+class ShoeViewSet(viewsets.ModelViewSet):
+    """
+    API endpoint that allows groups to be viewed or edited.
+    """
+    queryset = Shoe.objects.all()
+    serializer_class = ShoeSerializer
